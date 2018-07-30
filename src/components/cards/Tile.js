@@ -16,6 +16,7 @@ class Tile extends Component {
     };
 
     this.onImageLoaded = this.onImageLoaded.bind(this);
+    this.onImageNotFound = this.onImageNotFound.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,12 @@ class Tile extends Component {
   onImageLoaded() {
     this.setState({
       loading: false,
+    });
+  }
+
+  onImageNotFound() {
+    this.setState({
+      imageUrl: '/images/blank-card.jpg',
     });
   }
 
@@ -47,6 +54,7 @@ class Tile extends Component {
           <img
             alt={this.props.card.name}
             onLoad={this.onImageLoaded}
+            onError={this.onImageNotFound}
             src={this.state.imageUrl}
           />
         </a>
