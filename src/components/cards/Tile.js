@@ -1,14 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SyncLoader } from 'react-spinners';
-import { Storage } from '../../firebase';
+import { Link } from 'react-router-dom';
+import { DragSource } from 'react-dnd';
+
+const cardSource = {
+  beginDrag(props) {
+    return {
+      card: props.card,
+    };
+  },
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging(),
+  };
+}
 
 class Tile extends Component {
   constructor(props) {
     super(props);
 
-    const urlName = props.card.name.replace(/ /g, '%20');
-    const url = `https://db.ygoprodeck.com/card/?search=${urlName}`;
+    // const urlName = props.card.name.replace(/ /g, '%20');
+    const url = `/cards/${props.card.id}`;
 
     this.state = {
       loading: true,
@@ -19,11 +35,11 @@ class Tile extends Component {
     this.onImageNotFound = this.onImageNotFound.bind(this);
   }
 
+
   componentDidMount() {
-    Storage.ref(`images/cards/${this.props.card.id}.jpg`).getDownloadURL().then((imageUrl) => {
-      this.setState({
-        imageUrl,
-      });
+    const imageUrl = `http://localhost:3001/images/${this.props.card.id}.jpg`;
+    this.setState({
+      imageUrl,
     });
   }
 
@@ -41,30 +57,35 @@ class Tile extends Component {
 
   render() {
     const { loading } = this.state;
+    const { isDragging, connectDragSource } = this.props;
 
-    return (
-      <div className="card-tile">
+    return connectDragSource(
+      <div className="card-tile" style={{ opacity: isDragging ? 0.5 : 1 }}>
         {loading
           && <div className="card-tile-loader">
             <SyncLoader color="white"></SyncLoader>
           </div>
         }
 
-        <a href={this.state.url} target="_blank" rel="noopener noreferrer">
+        <Link to={this.state.url}>
           <img
             alt={this.props.card.name}
             onLoad={this.onImageLoaded}
             onError={this.onImageNotFound}
             src={this.state.imageUrl}
           />
-        </a>
-      </div>
+        </Link>
+      </div>,
     );
   }
 }
 
 Tile.propTypes = {
   card: PropTypes.object.isRequired,
+
+  // Injected by React DnD:
+  isDragging: PropTypes.bool.isRequired,
+  connectDragSource: PropTypes.func.isRequired,
 };
 
-export default Tile;
+export default DragSource('CARD', cardSource, collect)(Tile);

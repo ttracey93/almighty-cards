@@ -15,12 +15,13 @@
 
     .create-now {
       align-self: center;
+      margin-top: 5px;
       padding: 10px;
-      font-size: 1.2em;
-      background-color: $anchor-color;
-      color: $accent-color;
       border: none;
       cursor: pointer;
+      font-size: 1.2em;
+      color: $accent-color;
+      background-color: $anchor-color;
       transition: all 0.5s linear;
     }
 

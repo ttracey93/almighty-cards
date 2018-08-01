@@ -2,7 +2,7 @@ html, body, #root {
   width: 100%;
   height: 100%;
   margin: 0;
-  font-family: 'Source Sans Pro', sans-serif; }
+  font-family: 'Rubik', 'Source Sans Pro', sans-serif; }
 
 * {
   margin: 0;
@@ -47,10 +47,12 @@ a {
 
 .button {
   height: 35px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-radius: none;
   border: 1px solid #FFFFFF;
   color: #8bffd1;
-  background-color: #312F2F;
+  background-color: #3b3838;
   transition: all 0.2s linear;
   cursor: pointer; }
   .button i {
@@ -61,15 +63,23 @@ a {
 
 /* Notifications */
 .dark-toast {
-  background-color: #312F2F;
+  background-color: #3b3838;
   color: #8bffd1; }
+  .dark-toast.Toastify__toast--error {
+    color: #d47a7a; }
+  .dark-toast.Toastify__toast--error {
+    color: #d47a7a; }
+  .dark-toast .Toastify__progress-bar--success {
+    background-color: #8bffd1; }
+  .dark-toast .Toastify__progress-bar--error {
+    background-color: #d47a7a; }
 
 .app-bar {
   z-index: 1;
   display: flex;
   width: 100%;
   height: 50px;
-  background-color: #312F2F;
+  background-color: #3b3838;
   border-bottom: 1px solid #FFFFFF; }
   .app-bar a {
     color: #8bffd1;
@@ -80,6 +90,13 @@ a {
     margin-left: 15px;
     font-size: 2em;
     align-self: center; }
+    .app-bar .logo-link img {
+      height: 40px;
+      color: #8bffd1;
+      margin-top: 5px;
+      transition: all 0.3s ease-in-out; }
+      .app-bar .logo-link img:hover {
+        transform: rotate(90deg); }
   .app-bar .brand-link {
     margin-left: 15px;
     font-size: 2em;
@@ -99,14 +116,14 @@ a {
       cursor: pointer;
       width: 150px;
       padding: 10px;
-      background-color: #312F2F;
+      background-color: #3b3838;
       color: #8bffd1;
       border: 1px solid #FFFFFF; }
     .app-bar .app-actions .logout-button {
       cursor: pointer;
       width: 150px;
       padding: 10px;
-      background-color: #312F2F;
+      background-color: #3b3838;
       color: #8bffd1;
       border: 1px solid #FFFFFF;
       margin-left: 10px !important; }
@@ -116,9 +133,44 @@ a {
     .app-bar .app-actions .active-user {
       color: #8bffd1; }
 
+.app-footer {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  background-color: #3b3838;
+  border-top: 1px solid #FFFFFF; }
+  .app-footer a {
+    color: #8bffd1;
+    transition: color 0.5s ease; }
+  .app-footer a:hover {
+    color: #AEBBFF; }
+  .app-footer .logo-link {
+    margin-left: 15px;
+    font-size: 1.3em;
+    align-self: center; }
+  .app-footer .brand-link {
+    margin-left: 15px;
+    font-size: 1.3em;
+    color: #FFFFFF;
+    text-decoration: none;
+    align-self: center; }
+  .app-footer .dashboard-link {
+    margin-left: auto;
+    margin-right: 10px;
+    border: 1px solid #FFFFFF;
+    padding: 5px;
+    font-size: 1.5em;
+    color: #8bffd1;
+    text-decoration: none;
+    align-self: center; }
+    .app-footer .dashboard-link:hover {
+      color: #AEBBFF; }
+    .app-footer .dashboard-link i {
+      margin-right: 5px; }
+
 .welcome {
   position: relative;
-  background-color: #312F2F; }
+  background-color: #3b3838; }
   .welcome .welcome-banner {
     display: flex;
     flex-direction: column;
@@ -129,30 +181,37 @@ a {
       font-size: 2em; }
     .welcome .welcome-banner .create-now {
       align-self: center;
+      margin-top: 5px;
       padding: 10px;
-      font-size: 1.2em;
-      background-color: #312F2F;
-      color: #8bffd1;
       border: none;
       cursor: pointer;
+      font-size: 1.2em;
+      color: #8bffd1;
+      background-color: #3b3838;
       transition: all 0.5s linear; }
     .welcome .welcome-banner .create-now:hover {
       color: #FFFFFF;
       background-color: #6457A6; }
 
 .dashboard {
-  background-color: #312F2F; }
-
-.dashboard-heading {
-  margin: 0;
-  margin-top: 10px;
-  text-align: center;
-  color: #FFFFFF; }
+  background-color: #3b3838; }
+  .dashboard .home {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin: auto; }
+    .dashboard .home .no-decks {
+      display: flex;
+      flex-direction: column;
+      font-size: 2em;
+      align-items: center; }
+      .dashboard .home .no-decks h1 {
+        color: #FFFFFF; }
 
 .search .search-stuff {
   justify-content: center;
   margin: 0 auto;
-  height: 100px; }
+  margin-top: 20px; }
   .search .search-stuff label {
     color: #FFFFFF; }
     .search .search-stuff label input {
@@ -195,3 +254,27 @@ a {
       transition: all .2s ease-in-out; }
       .search .cards .card-tile img:hover {
         transform: scale(1.05); }
+
+.card-view-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto; }
+  .card-view-container .card-view {
+    display: flex; }
+    .card-view-container .card-view img {
+      align-self: flex-start; }
+    .card-view-container .card-view .card-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      color: #FFFFFF; }
+      .card-view-container .card-view .card-info label {
+        border: 1px solid #FFFFFF;
+        padding: 5px;
+        max-width: 350px;
+        color: #8bffd1; }
+        .card-view-container .card-view .card-info label:not(:first-child) {
+          margin-top: 10px; }
+        .card-view-container .card-view .card-info label span {
+          margin-left: 5px;
+          color: #FFFFFF; }

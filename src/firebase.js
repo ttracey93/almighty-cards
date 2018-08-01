@@ -1,5 +1,4 @@
 import firebase from 'firebase/dist/index.cjs';
-import 'firebase/firestore'; // Might become useful
 
 const config = {
   apiKey: 'AIzaSyCc2Tj67XzK56m88_FEBSIIZ1Ps36ZEe5U',
@@ -18,10 +17,3 @@ export default firebase;
 // Auth
 export const GoogleProvider = new firebase.auth.GoogleAuthProvider();
 export const Auth = firebase.auth();
-
-// Schemas
-export const DB = firebase.firestore();
-export const Cards = DB.collection('cards');
-
-// Extras
-export const Storage = firebase.storage();

@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { PacmanLoader } from 'react-spinners';
-import { toastr } from 'react-toastify';
-import { Cards } from '../../firebase';
+import { toast } from 'react-toastify';
 import Tile from '../cards/Tile';
-
-const QUERY_LIMIT = 25;
+import CardService from '../../services/CardService';
 
 class Search extends React.Component {
   constructor(props) {
@@ -23,49 +21,52 @@ class Search extends React.Component {
     this.search = this.search.bind(this);
   }
 
+  componentDidMount() {
+    this.getCards();
+  }
+
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
     });
   }
 
-  async getCards(query) {
+  async getCards() {
     this.setState({
       loading: true,
     });
 
-    const cards = await query.get();
+    const cards = await CardService.random();
 
-    if (cards && cards.docs) {
-      this.setState({
-        cards: cards.docs,
-        loading: false,
-      });
-    } else {
-      toastr.error('Server Error: Could not load cards');
-    }
+    this.setState({
+      cards,
+      loading: false,
+    });
   }
 
-  search(e) {
+  async search(e) {
     if (e && e.type !== 'click' && e.key !== 'Enter') {
       return false;
     }
 
-    const searchValue = this.state.searchValue.toLowerCase();
+    this.setState({
+      loading: true,
+    });
 
-    const query = Cards.limit(QUERY_LIMIT)
-      .where('searchName', '>=', searchValue)
-      .where('searchName', '<', `${searchValue}a`);
-    return this.getCards(query);
-  }
+    const cards = await CardService.search(this.state.searchValue);
 
-  componentDidMount() {
-    this.getCards(Cards.limit(QUERY_LIMIT));
+    if (!cards || cards.length === 0) {
+      toast.error('No cards found!');
+    }
+
+    return this.setState({
+      cards,
+      loading: false,
+    });
   }
 
   getCard(card) {
-    const data = card.data();
-    return <Tile key={data.id} card={data} />;
+    return <Tile key={card.id} card={card} />;
   }
 
   getCardContent() {
@@ -74,7 +75,7 @@ class Search extends React.Component {
         <div className="cards-loader">
           <PacmanLoader
             className="cards-loader"
-            color="white"
+            color="#AEBBFF"
             size={50}
             loading={this.state.loading}
           />
@@ -88,7 +89,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="flex columns search">
-        <div className="flex search-stuff">
+        <div className="search-stuff">
           <label htmlFor="searchValue">
             Search for a card:
 

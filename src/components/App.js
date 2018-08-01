@@ -2,22 +2,25 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router, Route, Switch, Redirect,
-} from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 import Header from './Header';
-import Welcome from './Welcome';
+import Footer from './Footer';
+// import Welcome from './Welcome';
 import Dashboard from './dashboard/Dashboard';
 import * as actions from '../actions/auth';
 import 'react-toastify/dist/ReactToastify.css';
 
-const App = ({ user, initUser }) => {
+const App = ({
+  user, login, logout, initUser,
+}) => {
   const localUser = localStorage.getItem('user');
   const authedUser = user || JSON.parse(localUser);
   initUser(); // TODO: Get rid of this
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="flex columns">
         {/* Notification Container */}
         <ToastContainer
@@ -26,34 +29,42 @@ const App = ({ user, initUser }) => {
           progressClassName='toast-progress'
         />
 
-        <Header></Header>
+        <Header
+          user={user || authedUser}
+          logout={logout}
+          login={login}
+        ></Header>
 
         <div className="flex app-body">
-          {/* Landing page for all users */}
-          <Route path="/welcome" component={Welcome} />
+          {/* Landing page for all users
+          <Route exact path="/welcome" component={Welcome} />
 
           {/* Redirect guest users to the landing page */}
-          {!authedUser
+          {/* {!authedUser
             && <Redirect to='/welcome' />
           }
 
           {/* Authenticated users can see these pages */}
-          {authedUser
+          {/* {authedUser
             && <Switch>
-              <Route exact path="/" component={Dashboard} />
+              <Route path="/" component={Dashboard} />
             </Switch>
-          }
+          } */}
 
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/" render={props => <Dashboard {...props} user={user || authedUser} />} />
         </div>
+
+        <Footer user={user || authedUser}></Footer>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
 App.propTypes = {
   user: PropTypes.object,
-  initUser: PropTypes.func,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  initUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -63,4 +74,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   actions,
-)(App);
+)(DragDropContext(HTML5Backend)(App));

@@ -2,7 +2,7 @@
   .search-stuff {
     justify-content: center;
     margin: 0 auto;
-    height: 100px;
+    margin-top: 20px;
 
     label {
       color: $space-color;
@@ -69,3 +69,39 @@
   }
 }
 
+.card-view-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+
+  .card-view {
+    display: flex;
+
+    img {
+      align-self: flex-start;
+    }
+
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 10px;
+      color: $space-color;
+
+      label {
+        border: 1px solid $space-color;
+        padding: 5px;
+        max-width: 350px;
+        color: $accent-color;
+
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
+
+        span {
+          margin-left: 5px;
+          color: $space-color;
+        }
+      }
+    }
+  }
+}

@@ -5,7 +5,7 @@ const Welcome = () => (
   <div className="flex welcome">
     <div className="welcome-banner">
       <span className="header">
-        Welcome to Amazing Cards!
+        Welcome to Almighty Cards!
       </span>
 
       <button className="create-now">
