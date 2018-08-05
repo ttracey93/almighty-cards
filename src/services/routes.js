@@ -7,5 +7,6 @@ export default {
   Decks: {
     get: 'decks',
     getAllForUser: 'decks/user',
+    create: 'decks',
   },
 };

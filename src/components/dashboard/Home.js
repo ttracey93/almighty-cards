@@ -23,7 +23,7 @@ class Home extends Component {
   }
 
   getDeck(deck) {
-    return <Tile deck={deck} />;
+    return <Tile key={deck.id} deck={deck} />;
   }
 
   getContent() {
@@ -41,7 +41,24 @@ class Home extends Component {
     }
 
     if (this.state.decks && this.state.decks.length) {
-      return _.map(this.state.decks, this.getDeck);
+      const showCreate = this.state.decks.length < 5;
+
+      return (
+        <div className="decks-wrapper">
+          {showCreate
+            && <Link to="/decks/create">
+              <button className="button">
+                <i className="fa fa-plus"></i>
+                Create a new deck
+              </button>
+            </Link>
+          }
+
+          <div className="decks">
+            {_.map(this.state.decks, this.getDeck)}
+          </div>
+        </div>
+      );
     }
 
     return (

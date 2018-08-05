@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CardService from '../../services/CardService';
 
 class Card extends Component {
@@ -26,6 +27,13 @@ class Card extends Component {
   render() {
     return (
       <div className="card-view-container">
+        <Link to="/">
+          <button className="button">
+            <i className="fa fa-arrow-left"></i>
+            Go Back
+          </button>
+        </Link>
+
         <div className="card-view">
           <img
             src={this.state.imageUrl}

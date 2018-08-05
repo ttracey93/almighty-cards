@@ -17,5 +17,127 @@
         color: $space-color;
       }
     }
+    
+    .decks-wrapper {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+
+      .decks {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+  
+        .deck-tile{
+          position: relative;
+          width: 250px;
+  
+          img {
+            width: 250px;
+          }
+  
+          &:not(:first-child) {
+            margin-left: 10px;
+          }
+  
+          .deck-name {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-25px);
+            width: 100%;
+            text-align: center;
+  
+            color: $space-color;
+            font-size: 1.5em;
+            
+            text-overflow: ellipsis;
+            // white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+  }
+
+  .create-deck {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    h1 {
+      color: $space-color;
+    }
+
+    form {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      
+      label {
+        display: flex;
+        align-items: center;
+        color: $space-color;
+
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
+
+        input,textarea {
+          margin-left: 5px;
+        }
+      }
+
+      .button {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .deck-builder {
+    display: flex;
+    > * {
+      flex-basis: 50%;
+    }
+
+    .your-deck {
+      display: flex;
+      flex-direction: column;
+      margin: 25px;
+      padding: 10px;
+      border: 2px dashed $space-color;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      h1 {
+        align-self: center;
+        color: $accent-color;
+        font-size: 2em;
+      }
+
+      p {
+        align-self: center;
+        color: $space-color;
+        font-size: 1.2em;
+      }
+
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+
+        .card-tile {
+          width: 200px;
+
+          img {
+            width: 200px;
+          }
+        }
+      }
+    }
   }
 }

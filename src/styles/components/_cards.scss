@@ -25,7 +25,8 @@
   }
 
   .cards {
-    max-width: 1100px;
+    max-width: 1300px;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -57,12 +58,15 @@
       }
 
       img {
+        // position: absolute;
         width: 200px;
         height: 270px;
         transition: all .2s ease-in-out;
 
         &:hover {
           transform: scale(1.05);
+          // transform: scale(1.05) perspective(1px) rotate(10deg);
+          // z-index: 100;
         }
       }
     }
@@ -73,6 +77,11 @@
   display: flex;
   justify-content: center;
   margin: 20px auto;
+
+  .button {
+    position: absolute;
+    left: 10px;
+  }
 
   .card-view {
     display: flex;

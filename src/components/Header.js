@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 
 const Header = ({ user, login, logout }) => (
   <div className="app-bar">
-    <Link to="/" className="logo-link">
+    {/* <Link to="/" className="logo-link">
       <img
         alt="Almighty Cards Logo"
         className="app-svg"
         src="/cards.svg"
       />
-    </Link>
+    </Link> */}
 
     <Link to="/" className="brand-link">
       Almighty Cards

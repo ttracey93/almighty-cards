@@ -10,11 +10,6 @@ const Footer = ({ user }) => (
     <Link to="/" className="brand-link">
       Almighty Cards
     </Link>
-
-    <Link to="/dashboard" className="dashboard-link">
-      <i className="fa fa-home"></i>
-      Dashboard
-    </Link>
   </div>
 );
 

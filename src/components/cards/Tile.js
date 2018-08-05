@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SyncLoader } from 'react-spinners';
+import { BarLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
 import { DragSource } from 'react-dnd';
 
@@ -63,7 +63,7 @@ class Tile extends Component {
       <div className="card-tile" style={{ opacity: isDragging ? 0.5 : 1 }}>
         {loading
           && <div className="card-tile-loader">
-            <SyncLoader color="white"></SyncLoader>
+            <BarLoader color="white" />
           </div>
         }
 
