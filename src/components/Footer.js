@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 const Footer = ({ user }) => (
   <div className="app-footer">
     <Link to="/" className="logo-link">
-      <i className="fa fa-copyright"></i>
+      {/* <i className="fa fa-copyright"></i> */}
+
+      <img
+        src="/TempLogo.png"
+        alt="Temp Logo"
+      />
     </Link>
 
     <Link to="/" className="brand-link">

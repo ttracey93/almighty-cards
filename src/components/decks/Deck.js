@@ -1,55 +1,46 @@
 import React from 'react';
-import { DropTarget } from 'react-dnd';
 import _ from 'lodash';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import Tile from '../cards/Tile';
 
-const cards = [];
+class Deck extends React.Component {
+  constructor(props) {
+    super(props);
 
-function getCard(card) {
-  return <Tile key={card.id} card={card} />;
+    this.state = {
+      cards: [],
+    };
+  }
+
+  getCard(card) {
+    return <Tile key={card.id} card={card} draggable={false} />;
+  }
+
+  render() {
+    const cards = this.state.cards && this.state.cards.length > 0;
+
+    return (
+      <div className="your-deck">
+        <h1>
+          This is your deck
+        </h1>
+
+        <p>
+          Drag and drop cards here to add them to your deck
+        </p>
+
+        <div className="cards">
+          {cards
+            && _.map(this.state.cards, this.getCard)
+          }
+
+          {!cards
+            && <p>Your deck is currently empty</p>
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
-const Deck = ({ match, connectDropTarget }) => connectDropTarget(
-  <div className="your-deck">
-    <h1>
-      This is your deck
-    </h1>
-
-    <p>
-      Drag and drop cards here to add them to your deck
-    </p>
-
-    <div className="cards">
-      {_.map(cards, getCard)}
-    </div>
-  </div>,
-);
-
-const spec = {
-  drop: (props, monitor, component) => {
-    const item = monitor.getItem();
-
-    if (item && item.card) {
-      // DeckService.addCard();
-      const current = _.groupBy(cards, 'id')[item.card.id];
-
-      if (current && current.length && current.length > 2) {
-        toast.error(`You already have 3 copies of "${item.card.name}" in your deck`);
-      } else {
-        toast.success('Card added to deck!');
-        cards.push(item.card);
-      }
-    }
-  },
-  hover: () => {
-  },
-};
-
-const collect = (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget(),
-  isOver: monitor.isOver(),
-  canDrop: monitor.canDrop(),
-});
-
-export default DropTarget('CARD', spec, collect)(Deck);
+export default Deck;

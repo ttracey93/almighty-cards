@@ -66,7 +66,7 @@ class Search extends React.Component {
   }
 
   getCard(card) {
-    return <Tile key={card.id} card={card} />;
+    return <Tile key={card.id} card={card} draggable />;
   }
 
   getCardContent() {

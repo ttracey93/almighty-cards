@@ -10,6 +10,9 @@ const cardSource = {
       card: props.card,
     };
   },
+  canDrag(props) {
+    return props.draggable;
+  },
 };
 
 function collect(connect, monitor) {
@@ -24,7 +27,7 @@ class Tile extends Component {
     super(props);
 
     // const urlName = props.card.name.replace(/ /g, '%20');
-    const url = `/cards/${props.card.id}`;
+    const url = `/cards/${props.card.attributes.id}`;
 
     this.state = {
       loading: true,
@@ -37,7 +40,7 @@ class Tile extends Component {
 
 
   componentDidMount() {
-    const imageUrl = `http://localhost:3001/images/${this.props.card.id}.jpg`;
+    const imageUrl = `http://localhost:3001/images/${this.props.card.attributes.id}.jpg`;
     this.setState({
       imageUrl,
     });

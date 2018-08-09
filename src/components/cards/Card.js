@@ -13,6 +13,7 @@ class Card extends Component {
       imageUrl,
       card: {
         id: props.match.params.id,
+        attributes: {},
       },
     };
   }
@@ -37,56 +38,56 @@ class Card extends Component {
         <div className="card-view">
           <img
             src={this.state.imageUrl}
-            alt={this.state.card.name}
+            alt={this.state.card.attributes.name}
           />
 
           <div className="card-info">
             <label>
               Name:
               <span>
-                {this.state.card.name}
+                {this.state.card.attributes.name}
               </span>
             </label>
 
             <label>
               Description:
               <span>
-                {this.state.card.description}
+                {this.state.card.attributes.description}
               </span>
             </label>
 
             <label>
               Attack:
               <span>
-                {this.state.card.atk}
+                {this.state.card.attributes.atk}
               </span>
             </label>
 
             <label>
               Defense:
               <span>
-                {this.state.card.def}
+                {this.state.card.attributes.def}
               </span>
             </label>
 
             <label>
               Attribute:
               <span>
-                {this.state.card.attribute}
+                {this.state.card.attributes.attribute}
               </span>
             </label>
 
             <label>
               Type:
               <span>
-                {this.state.card.type}
+                {this.state.card.attributes.type}
               </span>
             </label>
 
             <label>
               Race:
               <span>
-                {this.state.card.race}
+                {this.state.card.attributes.race}
               </span>
             </label>
           </div>

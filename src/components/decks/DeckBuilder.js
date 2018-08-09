@@ -1,11 +1,11 @@
 import React from 'react';
 import Search from '../dashboard/Search';
-import Deck from './Deck';
+import DeckTray from './DeckTray';
 
 const DeckBuilder = () => (
   <div className="deck-builder">
-    <Search></Search>
-    <Deck></Deck>
+    <Search />
+    <DeckTray />
   </div>
 );
 

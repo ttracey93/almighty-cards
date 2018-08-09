@@ -53,25 +53,26 @@ a {
   border-radius: none;
   border: none;
   color: #272F38;
-  background-color: #e49d19;
+  background-color: #8E2C2C;
   transition: all 0.2s linear;
+  text-transform: uppercase;
   cursor: pointer; }
   .button i {
     margin-right: 10px; }
   .button:hover {
     background-color: #222222;
-    color: #f3575c; }
+    color: #EF892F; }
 
 /* Notifications */
 .dark-toast {
   background-color: #222222;
-  color: #f3575c; }
+  color: #EF892F; }
   .dark-toast.Toastify__toast--error {
     color: #d47a7a; }
   .dark-toast.Toastify__toast--error {
     color: #d47a7a; }
   .dark-toast .Toastify__progress-bar--success {
-    background-color: #f3575c; }
+    background-color: #EF892F; }
   .dark-toast .Toastify__progress-bar--error {
     background-color: #d47a7a; }
 
@@ -83,7 +84,7 @@ a {
   background-color: #222222;
   border-bottom: 1px solid #FFFFFF; }
   .app-bar a {
-    color: #f3575c;
+    color: #EF892F;
     transition: color 0.5s ease; }
   .app-bar a:hover {
     color: #272F38; }
@@ -93,7 +94,7 @@ a {
     align-self: center; }
     .app-bar .logo-link img {
       height: 40px;
-      color: #f3575c;
+      color: #EF892F;
       margin-top: 5px;
       transition: all 0.3s ease-in-out; }
       .app-bar .logo-link img:hover {
@@ -118,21 +119,21 @@ a {
       width: 150px;
       padding: 10px;
       background-color: #222222;
-      color: #f3575c;
+      color: #EF892F;
       border: 1px solid #FFFFFF; }
     .app-bar .app-actions .logout-button {
       cursor: pointer;
       width: 150px;
       padding: 10px;
       background-color: #222222;
-      color: #f3575c;
+      color: #EF892F;
       border: 1px solid #FFFFFF;
       margin-left: 10px !important; }
     .app-bar .app-actions .login-button:hover, .app-bar .app-actions .logout-button:hover {
       color: #FFFFFF;
-      background-color: #e49d19; }
+      background-color: #8E2C2C; }
     .app-bar .app-actions .active-user {
-      color: #f3575c; }
+      color: #EF892F; }
 
 .app-sidebar {
   will-change: transform; }
@@ -145,7 +146,7 @@ a {
     cursor: pointer;
     transition: all 0.2s ease-in-out; }
     .app-sidebar i:hover {
-      color: #f3575c;
+      color: #EF892F;
       transform: rotate(90deg); }
 
 .app-footer {
@@ -155,7 +156,7 @@ a {
   background-color: #222222;
   border-top: 1px solid #FFFFFF; }
   .app-footer a {
-    color: #f3575c;
+    color: #EF892F;
     transition: color 0.5s ease; }
   .app-footer a:hover {
     color: #272F38; }
@@ -163,6 +164,8 @@ a {
     margin-left: 15px;
     font-size: 1.3em;
     align-self: center; }
+    .app-footer .logo-link img {
+      width: 40px; }
   .app-footer .brand-link {
     margin-left: 15px;
     font-size: 1.3em;
@@ -175,7 +178,7 @@ a {
     border: 1px solid #FFFFFF;
     padding: 5px;
     font-size: 1.5em;
-    color: #f3575c;
+    color: #EF892F;
     text-decoration: none;
     align-self: center; }
     .app-footer .dashboard-link:hover {
@@ -193,7 +196,7 @@ a {
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #f3575c; }
+  background: #EF892F; }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
@@ -202,7 +205,7 @@ a {
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #e49d19; }
+  background: #8E2C2C; }
 
 /* General sidebar styles */
 .bm-menu {
@@ -226,7 +229,7 @@ a {
   display: inline-block;
   transition: all 0.2s ease-in-out; }
   .bm-item:hover {
-    color: #f3575c; }
+    color: #EF892F; }
 
 /* Styling of overlay */
 .bm-overlay {
@@ -250,12 +253,12 @@ a {
       border: none;
       cursor: pointer;
       font-size: 1.2em;
-      color: #f3575c;
+      color: #EF892F;
       background-color: #222222;
       transition: all 0.5s linear; }
     .welcome .welcome-banner .create-now:hover {
       color: #FFFFFF;
-      background-color: #e49d19; }
+      background-color: #8E2C2C; }
 
 .dashboard {
   background-color: #222222; }
@@ -332,7 +335,7 @@ a {
         display: none; }
       .dashboard .deck-builder .your-deck h1 {
         align-self: center;
-        color: #f3575c;
+        color: #EF892F;
         font-size: 2em; }
       .dashboard .deck-builder .your-deck p {
         align-self: center;
@@ -416,7 +419,7 @@ a {
         border: 1px solid #FFFFFF;
         padding: 5px;
         max-width: 350px;
-        color: #f3575c; }
+        color: #EF892F; }
         .card-view-container .card-view .card-info label:not(:first-child) {
           margin-top: 10px; }
         .card-view-container .card-view .card-info label span {

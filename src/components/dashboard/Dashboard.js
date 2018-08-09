@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Search from './Search';
 import Card from '../cards/Card';
+import Deck from '../decks/Deck';
 import DeckBuilder from '../decks/DeckBuilder';
 import CreateDeck from '../decks/Create';
 
@@ -18,7 +19,8 @@ const Dashboard = ({ user }) => (
 
     <Switch>
       <Route exact path="/decks/create" render={props => <CreateDeck {...props} user={user} />} />
-      <Route exact path="/decks/:id" component={DeckBuilder} />
+      <Route exact path="/decks/:id" component={Deck} />
+      <Route exact path="/decks/:id/build" component={DeckBuilder} />
     </Switch>
   </div>
 );
