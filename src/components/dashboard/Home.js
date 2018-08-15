@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PacmanLoader } from 'react-spinners';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid/v4';
 import DeckService from '../../services/DeckService';
 import Tile from '../decks/Tile';
 
@@ -23,7 +24,7 @@ class Home extends Component {
   }
 
   getDeck(deck) {
-    return <Tile key={deck.id} deck={deck} />;
+    return <Tile key={uuid()} deck={deck} />;
   }
 
   getContent() {

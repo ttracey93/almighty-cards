@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Search from './HeaderSearch';
 
 const Header = ({ user, login, logout }) => (
   <div className="app-bar">
@@ -13,14 +14,21 @@ const Header = ({ user, login, logout }) => (
     </Link> */}
 
     <Link to="/" className="brand-link">
-      Almighty Cards
+      Almighty Games and More
     </Link>
 
+    <Search></Search>
+
     {user && (
-      <span className="app-actions">
-        <span className="active-user">
+      <span className="flex app-actions">
+        <div className="active-user">
           {user.displayName}
-        </span>
+        </div>
+
+        <Link to="/dashboard" className="logout-button">
+          <i className="fa fa-credit-card login-icon"></i>
+          My Deck Profiles
+        </Link>
 
         <a className="logout-button" onClick={logout}>
           <i className="fa fa-sign-out login-icon"></i>
@@ -30,7 +38,7 @@ const Header = ({ user, login, logout }) => (
     )}
 
     {!user && (
-      <span className="app-actions">
+      <span className="flex app-actions">
         <a onClick={login} className="login-button">
           <i className="fa fa-google login-icon"></i>
           Login with Google

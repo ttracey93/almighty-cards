@@ -2,10 +2,10 @@ import React from 'react';
 import Search from '../dashboard/Search';
 import DeckTray from './DeckTray';
 
-const DeckBuilder = () => (
+const DeckBuilder = ({ match }) => (
   <div className="deck-builder">
-    <Search />
-    <DeckTray />
+    <Search clickable={false} />
+    <DeckTray match={match} />
   </div>
 );
 

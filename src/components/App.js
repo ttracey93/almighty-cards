@@ -8,7 +8,7 @@ import { DragDropContext } from 'react-dnd';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './Header';
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar';
 import Footer from './Footer';
 // import Welcome from './Welcome';
 import Dashboard from './dashboard/Dashboard';
@@ -39,7 +39,7 @@ const App = ({
         login={login}
       ></Header>
 
-      <Sidebar></Sidebar>
+      {/* <Sidebar></Sidebar> */}
 
       <div id="app-body" className="flex app-body">
         {/* Landing page for all users

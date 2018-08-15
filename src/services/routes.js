@@ -1,4 +1,8 @@
 export default {
+  Games: {
+    get: 'games',
+    types: 'games/types',
+  },
   Cards: {
     get: 'cards',
     random: 'cards/random',
@@ -8,5 +12,8 @@ export default {
     get: 'decks',
     getAllForUser: 'decks/user',
     create: 'decks',
+    addCard: 'decks/add',
+    removeCard: 'decks/remove',
+    getCards: 'decks/cards',
   },
 };

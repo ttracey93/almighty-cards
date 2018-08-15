@@ -60,7 +60,7 @@ class Tile extends Component {
 
   render() {
     const { loading } = this.state;
-    const { isDragging, connectDragSource } = this.props;
+    const { isDragging, connectDragSource, clickable } = this.props;
 
     return connectDragSource(
       <div className="card-tile" style={{ opacity: isDragging ? 0.5 : 1 }}>
@@ -70,14 +70,25 @@ class Tile extends Component {
           </div>
         }
 
-        <Link to={this.state.url}>
-          <img
+        {clickable
+          && <Link to={this.state.url}>
+            <img
+              alt={this.props.card.name}
+              onLoad={this.onImageLoaded}
+              onError={this.onImageNotFound}
+              src={this.state.imageUrl}
+            />
+          </Link>
+        }
+
+        {!clickable
+          && <img
             alt={this.props.card.name}
             onLoad={this.onImageLoaded}
             onError={this.onImageNotFound}
             src={this.state.imageUrl}
           />
-        </Link>
+        }
       </div>,
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 
+import Welcome from '../Welcome';
 import Home from './Home';
 import Search from './Search';
 import Card from '../cards/Card';
@@ -13,7 +14,8 @@ const Dashboard = ({ user }) => (
   <div className="flex dashboard">
     {/* TODO: Dashboard Header/Toolbar here? */}
     {/* Landing page for all users */}
-    <Route exact path="/" component={Search} />
+    <Route exact path="/" component={Welcome} />
+    <Route exact path="/search" render={props => <Search {...props} clickable />} />
     <Route exact path="/dashboard" render={props => <Home {...props} user={user} />} />
     <Route exact path="/cards/:id" component={Card} />
 

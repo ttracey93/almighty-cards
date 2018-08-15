@@ -30,6 +30,23 @@ class DeckService extends Service {
       return toast.error(ex.response.data);
     }
   }
+
+  async addCard(card, deck) {
+    const request = {
+      card,
+      deck,
+    };
+
+    const response = await super.post(routes.Decks.addCard, request);
+    return response;
+  }
+
+  async getCards(id) {
+    const route = `${routes.Decks.getCards}/${id}`;
+    const response = await super.get(route);
+
+    return response.data;
+  }
 }
 
 export default new DeckService();

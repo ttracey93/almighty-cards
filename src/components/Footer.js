@@ -13,8 +13,18 @@ const Footer = ({ user }) => (
     </Link>
 
     <Link to="/" className="brand-link">
-      Almighty Cards
+      Almighty Games and More
     </Link>
+
+    <div className="footer-links">
+      <Link to="/about">
+        About
+      </Link>
+
+      <Link to="/contact">
+        Contact
+      </Link>
+    </div>
   </div>
 );
 

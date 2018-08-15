@@ -1,34 +1,49 @@
 .welcome {
-  position: relative;
   background-color: $anchor-color;
-
-  .welcome-banner {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    z-index: 1;
-
-    .header {
-      color: $space-color;
-      font-size: 2em;
-    }
-
-    .create-now {
-      align-self: center;
-      margin-top: 5px;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2em;
-      color: $accent-color;
-      background-color: $anchor-color;
-      transition: all 0.5s linear;
-    }
-
-    .create-now:hover {
-      color: $space-color;
-      background-color: $primary-color;
-    }
+  
+  .header {
+    align-self: center;
+    font-size: 2em;
+    color: $accent-color;
+    margin-top: 15px;
   }
 }
 
+.games-grid {
+  margin: 25px;
+  color: $space-color;
+
+  .game-type-row {
+    display: flex;
+    width: 100%;
+    border: 1px solid $space-color;
+  
+    .game-type-cell {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      width: 25%;
+      background-color: $secondary-color;
+      font-weight: bold;
+      font-size: 1.3em;
+      border-left: 1px solid $space-color;
+    }
+  
+    .game-type-games {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      
+      .game-cell {
+        border-left: 1px solid $space-color;
+        // width: 100%;
+        padding: 10px;
+
+        &:not(first-child) {
+          border-top: 1px solid $space-color;
+        }
+      }
+    }
+  }
+}

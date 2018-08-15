@@ -2,10 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { PacmanLoader } from 'react-spinners';
+import { RingLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
+import uuid from 'uuid/v4';
 import Tile from '../cards/Tile';
 import CardService from '../../services/CardService';
+import SearchBar from '../HeaderSearch';
 
 class Search extends React.Component {
   constructor(props) {
@@ -13,16 +15,30 @@ class Search extends React.Component {
 
     this.state = {
       cards: [],
-      searchValue: '',
+      searchValue: props.searchValue || '',
       loading: true,
     };
 
+    this.getCard = this.getCard.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.searchWrapper = this.searchWrapper.bind(this);
     this.search = this.search.bind(this);
+  }
+
+  static getDerivedStateFromProps(props) {
+    return {
+      searchValue: props.searchValue,
+    };
   }
 
   componentDidMount() {
     this.getCards();
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.searchValue !== prevState.searchValue) {
+      this.getCards();
+    }
   }
 
   onChange(e) {
@@ -36,19 +52,28 @@ class Search extends React.Component {
       loading: true,
     });
 
+
+    if (this.state.searchValue && this.state.searchValue !== '') {
+      return this.search();
+    }
+
     const cards = await CardService.random();
 
-    this.setState({
+    return this.setState({
       cards,
       loading: false,
     });
   }
 
-  async search(e) {
+  searchWrapper(e) {
     if (e && e.type !== 'click' && e.key !== 'Enter') {
       return false;
     }
 
+    return this.search();
+  }
+
+  async search() {
     this.setState({
       loading: true,
     });
@@ -66,14 +91,14 @@ class Search extends React.Component {
   }
 
   getCard(card) {
-    return <Tile key={card.id} card={card} draggable />;
+    return <Tile key={uuid()} card={card} draggable clickable={this.props.clickable} />;
   }
 
   getCardContent() {
     if (this.state.loading) {
       return (
         <div className="cards-loader">
-          <PacmanLoader
+          <RingLoader
             className="cards-loader"
             color="#AEBBFF"
             size={50}
@@ -89,7 +114,9 @@ class Search extends React.Component {
   render() {
     return (
       <div className="flex columns search">
-        <div className="search-stuff">
+        <SearchBar></SearchBar>
+
+        {/* <div className="search-stuff">
           <label htmlFor="searchValue">
             Search for a card:
 
@@ -100,15 +127,15 @@ class Search extends React.Component {
               placeholder="Search for a card"
               value={this.state.searchValue}
               onChange={this.onChange}
-              onKeyDown={this.search}
+              onKeyDown={this.searchWrapper}
             />
           </label>
 
-          <button className="button primary" onClick={this.search}>
+          <button className="button primary" onClick={this.searchWrapper}>
             <i className="fa fa-search"></i>
             Search
           </button>
-        </div>
+        </div> */}
 
         <div className="cards">
           {this.getCardContent()}
@@ -119,11 +146,16 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  user: PropTypes.object,
+  searchValue: PropTypes.string,
+  clickable: PropTypes.bool,
+};
+
+Search.defaultProps = {
+  searchValue: '',
 };
 
 const mapStateToProps = state => ({
-  user: state.user,
+  searchValue: state.searchValue,
 });
 
 export default connect(

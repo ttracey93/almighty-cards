@@ -96,6 +96,8 @@
 
   .deck-builder {
     display: flex;
+    width: 100%;
+
     > * {
       flex-basis: 50%;
     }
@@ -104,6 +106,7 @@
       display: flex;
       flex-direction: column;
       margin: 25px;
+      margin-left: auto;
       padding: 10px;
       border: 2px dashed $space-color;
       overflow-y: scroll;
@@ -131,10 +134,92 @@
         margin-top: 10px;
 
         .card-tile {
-          width: 200px;
+          width: 100px;
 
           img {
-            width: 200px;
+            width: 100px;
+          }
+        }
+
+        .card-stack {
+          margin: 5px;
+
+          .card-tile {
+            &:not(:first-child) {
+              margin-top: -125px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.deck-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 150px;
+    padding-top: 20px;
+    color: $space-color;
+    border: 1px solid $space-color;
+    align-self: center;
+    text-align: center;
+
+    a {
+      margin: auto;
+    }
+  }
+
+  .your-deck {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    border: 2px dashed $space-color;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    h1 {
+      align-self: center;
+      color: $accent-color;
+      font-size: 2em;
+    }
+
+    p {
+      align-self: center;
+      color: $space-color;
+      font-size: 1.2em;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+
+      .card-tile {
+        width: 100px;
+
+        img {
+          width: 100px;
+        }
+      }
+
+      .card-stack {
+        margin: 5px;
+
+        .card-tile {
+          &:not(:first-child) {
+            margin-top: -125px;
           }
         }
       }
